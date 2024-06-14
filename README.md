@@ -12,6 +12,8 @@ npm install
 npm run dev
 ```
 
+use test card: https://docs.fincode.jp/develop_support/test_resources
+
 ## access url format
 
 access url using following url hash format:
