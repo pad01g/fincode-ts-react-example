@@ -1,30 +1,51 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## install
 
-Currently, two official plugins are available:
+```
+npm install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## run
 
-## Expanding the ESLint configuration
+```
+npm run dev
+```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## access url format
 
-- Configure the top-level `parserOptions` property like this:
+access url using following url hash format:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
+```
+http://localhost:5173/#p_test_XXXXXXXXXXXXXX,m_test_YYYYYYYYYYYYYY
+```
+
+## use server side javascript in browser for testing purpose
+
+place following files in the same level directory `fake-https-proxy-agent`.
+
+otherwise, server side code will not work.
+
+
+`fake-https-proxy-agent/index.js`
+
+```
+export const HttpsProxyAgent = {}
+```
+
+`fake-https-proxy-agent/package.json`
+```
+{
+  "name": "fake-https-proxy-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
